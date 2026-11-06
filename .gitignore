@@ -1,0 +1,27 @@
+# Kubernetes credentials / cluster access
+kubeconfig*
+*.kubeconfig
+.kube/
+
+# Secrets and keys
+*.key
+*.pem
+*.crt
+secrets/
+.env
+.env.*
+
+# Terraform / Vagrant / local VM state (if a lab uses them)
+.terraform/
+*.tfstate
+*.tfstate.*
+.vagrant/
+
+# Helm
+charts/*.tgz
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
