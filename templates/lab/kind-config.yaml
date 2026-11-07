@@ -1,0 +1,8 @@
+# Cluster definition for this lab. Adjust nodes, networking and node image.
+# Pin the node image so the lab stays reproducible, e.g.:
+#   image: kindest/node:vX.Y.Z
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker

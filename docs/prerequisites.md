@@ -7,6 +7,8 @@ Common tooling and cluster options shared by the labs. Each lab lists anything a
 | Tool | Purpose |
 |------|---------|
 | `kubectl` | Interact with the cluster |
+| `kind` | Create per-lab clusters |
+| `flux` | Bootstrap and inspect GitOps |
 | `helm` | Install charts (MetalLB, Istio, operators) |
 | `git` | Clone this repo |
 | `jq` / `yq` | Inspect JSON / YAML output |
