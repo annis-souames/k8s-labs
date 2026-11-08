@@ -13,9 +13,11 @@ are on is the one running the cluster; ask or check first.
 ## Layout
 
 - One self-contained directory per lab at the repo root, e.g. `ip-announce/`.
+- Each lab's guide is `lab.md` inside its directory (no `README.md` per lab).
+- `manifests/` holds what Flux deploys; `flux/` holds the entrypoint Kustomizations.
 - Shared material only in `docs/` and `templates/`.
 - Start new labs from `templates/lab/`. Add each one to the table in `README.md`.
-- Labs with variants (e.g. `l2/` and `bgp/`) keep `kind-config.yaml` and `flux/` per variant and share `base/`.
+- Labs with variants (e.g. `l2/` and `bgp/`) keep `kind-config.yaml` and `flux/` per variant and share `manifests/`.
 - Don't add top-level directories for anything that belongs to a single lab.
 
 ## GitOps
@@ -28,7 +30,7 @@ are on is the one running the cluster; ask or check first.
 
 - Pin versions: Kubernetes node image, Helm charts, container images.
 - Every lab has a goal, setup, steps, verification and a cleanup section that fully undoes it.
-- Record the versions a lab was tested against at the top of its README.
+- Record the versions a lab was tested against at the top of its `lab.md`.
 - No secrets, tokens or kubeconfigs in the repo. Use SOPS + age if a lab needs encrypted secrets.
 - Scripts: `bash`, `set -euo pipefail`, executable, with a one-line header comment saying what they do.
 
@@ -39,7 +41,7 @@ are on is the one running the cluster; ask or check first.
 - When showing commands, add a brief note on what they do. Skip this for basic `kubectl` and
   Linux commands (`get`, `apply`, `ls`, `cd`, ...).
 - Explain why when it isn't obvious; don't narrate the obvious.
-- Applies to READMEs, comments, commit messages and replies to the user.
+- Applies to lab guides, READMEs, comments, commit messages and replies to the user.
 
 ## Git
 

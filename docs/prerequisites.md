@@ -1,6 +1,6 @@
 # Prerequisites
 
-Tools shared by all labs. A lab lists anything extra at the top of its README.
+Tools shared by all labs. A lab lists anything extra at the top of its `lab.md`.
 
 ## Tools
 
