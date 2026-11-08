@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: metallb
+      version: 0.16.2
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  # Defaults: BGP runs in frr-k8s (an FRR daemonset on every node); the speaker only
+  # decides what to announce. Nodes labelled node.kubernetes.io/exclude-from-external-load-balancers
+  # (the control plane) never announce.

@@ -1,0 +1,9 @@
+# Announce every address from lb-pool to all peers, as a /32 per service.
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: lb-pool
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - lb-pool

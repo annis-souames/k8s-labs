@@ -1,0 +1,10 @@
+# Addresses MetalLB may hand out to LoadBalancer services. They exist only as BGP routes:
+# no Docker network or interface owns this range.
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: lb-pool
+  namespace: metallb-system
+spec:
+  addresses:
+    - 10.100.200.0/24
