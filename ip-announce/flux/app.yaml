@@ -1,0 +1,17 @@
+# Demo workload and the Istio Gateway/VirtualService that expose it.
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: istio
+  interval: 10m
+  retryInterval: 1m
+  path: ./ip-announce/manifests/app
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

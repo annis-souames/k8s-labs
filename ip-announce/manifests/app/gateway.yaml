@@ -1,0 +1,33 @@
+# Open port 80 on the ingress gateway and route everything to httpbin.
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: ingress
+  namespace: istio-ingress
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - demo/*
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: httpbin
+  namespace: demo
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - istio-ingress/ingress
+  http:
+    - route:
+        - destination:
+            host: httpbin
+            port:
+              number: 80

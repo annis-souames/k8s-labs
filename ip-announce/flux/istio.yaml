@@ -1,0 +1,19 @@
+# Istio control plane and the ingress gateway. The gateway's LoadBalancer service takes its
+# address from MetalLB, so MetalLB's config goes first.
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: istio
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: metallb-config
+  interval: 10m
+  retryInterval: 1m
+  timeout: 15m
+  path: ./ip-announce/manifests/istio
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
